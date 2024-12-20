@@ -1,7 +1,20 @@
 <script lang="ts">
-  let exception = ""
+  let exception = `System.NullReferenceException: Object reference not set to an instance of an object.
+   at MyApp.Services.UserService.GetUserById(Int32 userId) in C:\Projects\MyApp\Services\UserService.cs:line 45
+   at MyApp.Controllers.UserController.GetDetails(Int32 id) in C:\Projects\MyApp\Controllers\UserController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Hosting.Internal.RequestServicesContainerMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequestsAsync()`
   let output = ""
+  transform();
 
+
+  // TODO setting toggles for what pieces you want to show or not
+  // TODO syntax highlighting for sections
+  
   function simplifyException(text: string): string {
     return text
       .split("\n")
@@ -31,7 +44,7 @@
 </script>
 
 <main>
-  <h1>Exception Simplifier</h1>
+  <h1>Tidy Stack</h1>
   <textarea bind:value={exception} placeholder="Paste your exception here"></textarea>
   <br />
   <button on:click={transform}>Transform</button>
@@ -45,10 +58,6 @@
     margin-bottom: 1rem;
     font-family: monospace;
     font-size: 0.9rem;
-  }
-
-  button {
-    margin-bottom: 1rem;
   }
 
   pre {
