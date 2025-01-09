@@ -1,5 +1,7 @@
 # Tidy Stack
 
+<https://tidystack.netlify.app/>
+
 Turns stack traces that looks like this
 
 ```log
